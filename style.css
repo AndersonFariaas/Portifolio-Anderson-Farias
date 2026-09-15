@@ -18,7 +18,7 @@ html {
 body {
   margin: 0;
   color: var(--texto);
-  background: var(--fundo);
+  background: #EFFAFD;
   font-family: "Inter", Arial, sans-serif;
   line-height: 1.6;
 }
@@ -34,6 +34,7 @@ a {
 }
 
 .cabecalho {
+  background-color: #4A8BDF;
   border-bottom: 1px solid var(--linha);
 }
 
@@ -65,11 +66,25 @@ nav a,
   font-size: .82rem;
 }
 
-nav a:hover,
 .redes a:hover,
 .rodape a:hover {
   color: var(--destaque);
 }
+
+.btn-nav {
+  padding: 5px 10px;
+  border-radius: 5px;
+  color: white;
+  background: black;
+  font-size: .85rem;
+  font-weight: 600;
+}
+
+.btn-nav:hover {
+  background-color: #A0006D;
+  color: white;
+}
+
 
 .hero {
   max-width: 950px;
@@ -113,19 +128,25 @@ nav a:hover,
 
 .botao {
   padding: 13px 20px;
-  color: var(--branco);
-  background: var(--texto);
+  color: white;
+  background: #181818;
   font-size: .85rem;
   font-weight: 600;
+  border-radius: 9px;
 }
 
 .botao:hover {
-  background: var(--destaque);
+  color: white;
+  background: #A0006D;
 }
 
 .link-texto {
   font-size: .9rem;
   font-weight: 600;
+}
+
+.link-texto:hover {
+  color: #A0006D;
 }
 
 .link-texto span,
@@ -241,7 +262,7 @@ h3 {
   margin-top: 30px;
   padding: 100px 0;
   color: var(--branco);
-  background: var(--texto);
+  background: #4A8BDF;
 }
 
 .contato h2 {
