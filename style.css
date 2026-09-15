@@ -88,8 +88,14 @@ nav a,
   margin-left: max(24px, calc((100% - 1120px) / 2));
 }
 
+.sobreTitulo01 {
+  font-size: .80rem;
+  font-weight: 700;
+  letter-spacing: .13em;
+}
+
 .sobretitulo {
-  color: #4A8BDF;
+  color: #EFFAFD;
   font-size: .80rem;
   font-weight: 700;
   letter-spacing: .13em;
