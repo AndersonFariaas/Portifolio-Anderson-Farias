@@ -52,10 +52,6 @@ a {
   letter-spacing: .08em;
 }
 
-.logo span {
-  color: var(--destaque);
-}
-
 nav {
   display: flex;
   gap: 26px;
