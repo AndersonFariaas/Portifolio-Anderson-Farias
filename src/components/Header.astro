@@ -15,7 +15,7 @@ const anchor = (hash: string) => (isHome ? hash : `${homePath}${hash}`);
       <Logo />
     </a>
 
-    <nav aria-label="Navegação principal" class="hidden md:block">
+    <nav aria-label="Navegação principal" class="hidden lg:block">
       <ul class="flex items-center gap-1">
         {navLinks.slice(0, -1).map((link) => (
           <li>
@@ -35,7 +35,7 @@ const anchor = (hash: string) => (isHome ? hash : `${homePath}${hash}`);
       </ul>
     </nav>
 
-    <div class="flex items-center gap-1 md:hidden">
+    <div class="flex items-center gap-1 lg:hidden">
       <a href={anchor('#contato')} class="btn btn-primary px-4">
         Contato
       </a>
@@ -67,7 +67,7 @@ const anchor = (hash: string) => (isHome ? hash : `${homePath}${hash}`);
   <nav
     id="menu-mobile"
     aria-label="Navegação principal"
-    class="hidden border-t border-line bg-bg md:hidden"
+    class="hidden border-t border-line bg-bg lg:hidden"
     data-menu
   >
     <ul class="container-page flex flex-col py-3">
@@ -112,5 +112,5 @@ const anchor = (hash: string) => (isHome ? hash : `${homePath}${hash}`);
   document.addEventListener('keydown', (event) => {
     if (event.key === 'Escape') setMenu(false);
   });
-  matchMedia('(min-width: 768px)').addEventListener('change', () => setMenu(false));
+  matchMedia('(min-width: 1024px)').addEventListener('change', () => setMenu(false));
 </script>

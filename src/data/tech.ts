@@ -4,11 +4,11 @@ import {
   siExpress,
   siGit,
   siGithub,
+  siGnubash,
   siHtml5,
   siJavascript,
   siLinux,
   siNodedotjs,
-  siPinia,
   siPython,
   siSocketdotio,
   siSqlite,
@@ -50,7 +50,7 @@ function readableColor(hex: string): string {
   return contrast(hex, SURFACE_HEX) >= MIN_CONTRAST ? `#${hex}` : FALLBACK_COLOR;
 }
 
-function tech(icon: SimpleIcon, name = icon.title): Tech {
+export function tech(icon: SimpleIcon, name = icon.title): Tech {
   return { name, path: icon.path, color: readableColor(icon.hex) };
 }
 
@@ -61,7 +61,6 @@ export const stack: Tech[] = [
   tech(siJavascript),
   tech(siTypescript),
   tech(siVuedotjs, 'Vue'),
-  tech(siPinia),
   tech(siVite),
   tech(siTailwindcss, 'Tailwind'),
   tech(siAstro),
@@ -74,6 +73,7 @@ export const stack: Tech[] = [
   tech(siVitest),
   tech(siPython),
   tech(siLinux),
+  tech(siGnubash, 'Shell script'),
   tech(siGit),
   tech(siGithub),
   tech(siVercel),

@@ -2,17 +2,17 @@
 export const areas = [
   {
     title: 'Cibersegurança',
-    description: 'Desenvolvimento seguro e proteção de ambientes de TI.',
+    description: 'Desenvolvimento seguro, hacking ético, análise de logs e defesa cibernética.',
     icon: 'M12 3l7 3v5c0 4.5-3 8.3-7 10-4-1.7-7-5.5-7-10V6l7-3z M9.5 12l1.8 1.8L15 10',
   },
   {
     title: 'Redes de computadores',
-    description: 'Protocolos de comunicação e segurança de redes.',
+    description: 'Protocolos TCP/IP, serviços de internet e segurança de redes.',
     icon: 'M12 7v4m0 0l-5.5 6m5.5-6l5.5 6 M12 3a2 2 0 1 1 0 4 2 2 0 0 1 0-4z M5 17a2 2 0 1 1 0 4 2 2 0 0 1 0-4z M19 17a2 2 0 1 1 0 4 2 2 0 0 1 0-4z',
   },
   {
     title: 'Windows e Linux',
-    description: 'Administração de sistemas operacionais.',
+    description: 'Administração de sistemas e servidores, Shell script e SSH.',
     icon: 'M5 4h14a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1z M8 9l3 3-3 3 M13 15h3',
   },
   {
@@ -32,12 +32,12 @@ export const areas = [
   },
   {
     title: 'Metodologias ágeis',
-    description: 'Entregas em ciclos curtos, com melhoria contínua.',
+    description: 'Scrum e ciclo de vida de desenvolvimento de software (SDLC).',
     icon: 'M20 12a8 8 0 1 1-2.34-5.66 M20 4v4h-4 M9 12l2 2 4-4',
   },
   {
     title: 'Hardware',
-    description: 'Manutenção de computadores e notebooks.',
+    description: 'Manutenção de computadores, notebooks e pequenas redes.',
     icon: 'M7 7h10v10H7z M10 10h4v4h-4z M9 3v4 M15 3v4 M9 17v4 M15 17v4 M3 9h4 M3 15h4 M17 9h4 M17 15h4',
   },
 ] as const;
