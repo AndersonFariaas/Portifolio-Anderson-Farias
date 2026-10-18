@@ -14,46 +14,7 @@ export const navLinks = [
   { href: '#sobre', label: 'Sobre' },
   { href: '#projetos', label: 'Projetos' },
   { href: '#habilidades', label: 'Habilidades' },
+  { href: '#trajetoria', label: 'Trajetória' },
+  { href: '#certificacoes', label: 'Certificações' },
   { href: '#contato', label: 'Contato' },
-] as const;
-
-export const skillGroups = [
-  {
-    title: 'Desenvolvimento web',
-    command: 'ls ./web',
-    items: [
-      'HTML e CSS',
-      'JavaScript',
-      'TypeScript',
-      'Vue 3',
-      'Node.js',
-      'Tailwind CSS',
-      'SQL',
-      'Supabase',
-    ],
-  },
-  {
-    title: 'Segurança e infraestrutura',
-    command: 'ls ./security',
-    items: [
-      'Cibersegurança',
-      'Redes de computadores',
-      'Protocolos de comunicação',
-      'Segurança de redes',
-      'Windows e Linux',
-      'Python para automação',
-    ],
-  },
-  {
-    title: 'Práticas e ferramentas',
-    command: 'ls ./tools',
-    items: [
-      'Git e GitHub',
-      'Cloud computing',
-      'UI/UX',
-      'Metodologias ágeis',
-      'Testes com Vitest',
-      'Manutenção de hardware',
-    ],
-  },
 ] as const;

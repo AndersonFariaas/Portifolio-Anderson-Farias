@@ -1,0 +1,16 @@
+---
+import TechIcon from './TechIcon.astro';
+import { findTech } from '../data/tech';
+
+interface Props {
+  name: string;
+}
+
+const { name } = Astro.props;
+const tech = findTech(name);
+---
+
+<span class="tag">
+  {tech && <TechIcon tech={tech} size={13} />}
+  {name}
+</span>

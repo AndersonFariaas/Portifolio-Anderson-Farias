@@ -1,11 +1,17 @@
 ---
 import SectionHeading from './SectionHeading.astro';
+import { certifications, experiences, fullYears, languages, location } from '../data/profile';
+
+const techExperience = experiences.find((item) => item.company.startsWith('CyberWare'));
+const techYears = techExperience?.end ? fullYears(techExperience.start, techExperience.end) : 0;
 
 const facts = [
-  { label: 'Formação', value: 'Desenvolvimento de Sistemas' },
+  { label: 'Formação', value: 'Técnico em Desenvolvimento de Sistemas · Firjan SENAI' },
+  { label: 'Experiência', value: `${techYears}+ anos em manutenção e suporte de TI` },
   { label: 'Foco', value: 'Cibersegurança e desenvolvimento seguro' },
-  { label: 'Sistemas', value: 'Windows e Linux' },
-  { label: 'Prática', value: 'Manutenção de computadores e notebooks' },
+  { label: 'Certificações', value: `${certifications.length}, incluindo Cisco e Fortinet` },
+  { label: 'Idiomas', value: languages.join(' · ') },
+  { label: 'Localização', value: location },
 ];
 ---
 

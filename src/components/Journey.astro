@@ -1,0 +1,79 @@
+---
+import SectionHeading from './SectionHeading.astro';
+import { education, experiences, formatPeriod } from '../data/profile';
+
+const timelines = [
+  {
+    command: 'git log --experiencia',
+    title: 'Experiência',
+    items: experiences.map((item) => ({
+      title: item.role,
+      subtitle: item.company,
+      period: formatPeriod(item.start, item.end),
+      current: !item.end,
+      description: item.description,
+      tags: item.tags,
+    })),
+  },
+  {
+    command: 'git log --formacao',
+    title: 'Formação',
+    items: education.map((item) => ({
+      title: item.course,
+      subtitle: item.institution,
+      period: formatPeriod(item.start, item.end),
+      current: !item.end,
+      description: item.description,
+      tags: [] as string[],
+    })),
+  },
+];
+---
+
+<section
+  id="trajetoria"
+  class="border-y border-line bg-surface/40"
+  aria-labelledby="trajetoria-titulo"
+>
+  <div class="container-page py-20 sm:py-28">
+    <SectionHeading index="04" title="Trajetória" id="trajetoria-titulo" />
+
+    <div class="grid gap-14 lg:grid-cols-2 lg:gap-16">
+      {timelines.map((timeline) => (
+        <div data-reveal>
+          <h3 class="mb-8 font-mono text-sm text-muted">
+            <span class="text-accent">$</span> {timeline.command}
+          </h3>
+          <ol class="relative space-y-10 border-l border-line pl-7">
+            {timeline.items.map((item) => (
+              <li class="relative">
+                <span
+                  class:list={[
+                    'absolute top-1.5 -left-[33px] size-3 rounded-full border-2',
+                    item.current
+                      ? 'border-accent bg-accent shadow-[0_0_0_4px_rgb(94_234_212/0.15)]'
+                      : 'border-line-strong bg-bg',
+                  ]}
+                  aria-hidden="true"
+                />
+                <p class="font-mono text-xs text-muted">{item.period}</p>
+                <p class="mt-1.5 text-lg font-semibold text-ink">{item.title}</p>
+                <p class="text-sm text-muted">{item.subtitle}</p>
+                {item.description && (
+                  <p class="mt-3 text-sm leading-relaxed text-muted">{item.description}</p>
+                )}
+                {item.tags.length > 0 && (
+                  <ul class="mt-3 flex flex-wrap gap-2" aria-label="Competências">
+                    {item.tags.map((tag) => (
+                      <li class="tag">{tag}</li>
+                    ))}
+                  </ul>
+                )}
+              </li>
+            ))}
+          </ol>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

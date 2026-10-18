@@ -1,0 +1,23 @@
+---
+import type { Tech } from '../data/tech';
+
+interface Props {
+  tech: Tech;
+  size?: number;
+  class?: string;
+}
+
+const { tech, size = 24, class: className } = Astro.props;
+---
+
+<svg
+  class:list={['tech-icon shrink-0', className]}
+  style={`--brand: ${tech.color}`}
+  width={size}
+  height={size}
+  viewBox="0 0 24 24"
+  fill="currentColor"
+  aria-hidden="true"
+>
+  <path d={tech.path}></path>
+</svg>

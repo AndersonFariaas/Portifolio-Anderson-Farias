@@ -1,0 +1,95 @@
+---
+import SectionHeading from './SectionHeading.astro';
+import TechIcon from './TechIcon.astro';
+import {
+  certifications,
+  formatMonth,
+  issuerIcon,
+  linkedinCertificationsUrl,
+} from '../data/profile';
+
+const byDateDesc = (a: { date: string }, b: { date: string }) => b.date.localeCompare(a.date);
+const featured = certifications.filter((cert) => cert.featured);
+const all = [...certifications].sort(byDateDesc);
+const issuers = new Set(certifications.map((cert) => cert.issuer.split(' · ')[0])).size;
+---
+
+<section
+  id="certificacoes"
+  class="container-page py-20 sm:py-28"
+  aria-labelledby="certificacoes-titulo"
+>
+  <SectionHeading index="05" title="Certificações" id="certificacoes-titulo">
+    <p class="mt-4 max-w-2xl text-lg text-muted">
+      <strong class="font-semibold text-ink">{certifications.length} certificações</strong>{' '}
+      {`de ${issuers} instituições, com foco em cibersegurança, redes e Linux. `}
+      Os selos da Cisco podem ser verificados na Credly.
+    </p>
+  </SectionHeading>
+
+  <ul class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+    {featured.map((cert) => {
+      const icon = issuerIcon(cert.issuer);
+      return (
+        <li class="group card flex flex-col p-5" data-reveal>
+          <div class="mb-4 flex items-center justify-between gap-3">
+            <span class="flex items-center gap-2 font-mono text-xs text-muted">
+              {icon && <TechIcon tech={icon} size={18} />}
+              {cert.issuer}
+            </span>
+            <span class="shrink-0 font-mono text-xs text-muted">{formatMonth(cert.date)}</span>
+          </div>
+          <p class="font-semibold text-ink">{cert.title}</p>
+          {cert.verifyUrl && (
+            <a
+              href={cert.verifyUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="mt-auto inline-flex min-h-11 items-center gap-1.5 pt-3 text-sm font-semibold text-accent hover:text-accent-strong"
+            >
+              Verificar na Credly ↗<span class="sr-only">: {cert.title}</span>
+            </a>
+          )}
+        </li>
+      );
+    })}
+  </ul>
+
+  <details class="group/all card mt-6 overflow-hidden" data-reveal>
+    <summary class="flex min-h-14 cursor-pointer list-none items-center justify-between gap-4 px-5 font-semibold text-ink hover:bg-surface-2 [&::-webkit-details-marker]:hidden">
+      <span>
+        <span class="font-mono">
+          <span class="text-accent">$</span> ls ./certificacoes
+        </span>
+        <span class="ml-1 font-mono text-sm font-normal text-muted">({all.length})</span>
+      </span>
+      <span
+        class="text-muted transition-transform duration-300 group-open/all:rotate-180"
+        aria-hidden="true"
+      >
+        ▾
+      </span>
+    </summary>
+    <ol class="divide-y divide-line border-t border-line">
+      {all.map((cert) => (
+        <li class="flex flex-col gap-1 px-5 py-3.5 sm:flex-row sm:items-baseline sm:justify-between sm:gap-6">
+          <span>
+            <span class="text-ink">{cert.title}</span>
+            <span class="block text-sm text-muted sm:inline sm:before:content-['·_'] sm:before:mx-2">
+              {cert.issuer}
+            </span>
+          </span>
+          <span class="shrink-0 font-mono text-xs text-muted">{formatMonth(cert.date)}</span>
+        </li>
+      ))}
+    </ol>
+    <a
+      href={linkedinCertificationsUrl}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="flex min-h-12 items-center justify-center border-t border-line text-sm font-semibold text-muted hover:text-accent"
+    >
+      Ver detalhes no LinkedIn ↗
+    </a>
+  </details>
+</section>
