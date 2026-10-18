@@ -30,9 +30,13 @@ O site abre em `http://localhost:4321`.
 
 Crie um arquivo `.md` em `src/content/projetos/`. Os campos obrigatórios (título, resumo, stack, destaques…) são validados no build pelo esquema em `src/content.config.ts`. Para usar uma screenshot, salve a imagem em `src/assets/projetos/` e informe `cover` e `coverAlt`. Sem capa, o site gera uma automaticamente.
 
-Dados pessoais (e-mail, redes, habilidades) ficam em `src/data/site.ts`.
+Os demais dados ficam em `src/data/`: contato e redes em `site.ts`, carreira e certificações em `profile.ts`, stack em `tech.ts` e áreas de atuação em `areas.ts`.
 
-## Deploy
+## Deploy (Vercel)
 
-- **GitHub Pages:** o workflow `.github/workflows/deploy.yml` publica a cada push na `main`. Em _Settings → Pages_, a origem precisa estar como **GitHub Actions**.
-- **Vercel:** importe o repositório. Não precisa de variáveis: sem `BASE_PATH`, o site é gerado na raiz do domínio.
+O site é publicado na [Vercel](https://vercel.com), integrada ao GitHub:
+
+- Push na `main` → deploy de produção.
+- Pull request → deploy de preview com link próprio.
+
+A Vercel detecta o Astro automaticamente (build `npm run build`, saída `dist/`), então não é preciso configurar variáveis de ambiente. O domínio usado em canonical, `og:image` e sitemap vem de `VERCEL_PROJECT_PRODUCTION_URL`, que a própria Vercel define no build.
