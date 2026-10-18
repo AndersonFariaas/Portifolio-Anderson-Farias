@@ -1,6 +1,7 @@
 ---
 import type { CollectionEntry } from 'astro:content';
 import ProjectCover from './ProjectCover.astro';
+import StackTag from './StackTag.astro';
 import { url } from '../lib/url';
 
 interface Props {
@@ -66,7 +67,9 @@ const caseUrl = url(`projetos/${project.id}/`);
 
     <ul class="mt-6 flex flex-wrap gap-2" aria-label="Tecnologias">
       {stack.slice(0, wide ? 8 : 5).map((tech) => (
-        <li class="tag">{tech}</li>
+        <li>
+          <StackTag name={tech} />
+        </li>
       ))}
     </ul>
 

@@ -2,6 +2,7 @@
 import { getCollection, render, type CollectionEntry } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ProjectCover from '../../components/ProjectCover.astro';
+import StackTag from '../../components/StackTag.astro';
 import { url } from '../../lib/url';
 
 export async function getStaticPaths() {
@@ -61,11 +62,11 @@ const { Content } = await render(project);
         <dt class="font-mono text-xs text-accent uppercase">Status</dt>
         <dd class="mt-1">{status}</dd>
       </div>
-      <div class="bg-surface p-5 sm:col-span-2">
+      <div class="group bg-surface p-5 sm:col-span-2">
         <dt class="font-mono text-xs text-accent uppercase">Stack</dt>
         <dd class="mt-2 flex flex-wrap gap-2">
           {stack.map((tech) => (
-            <span class="tag">{tech}</span>
+            <StackTag name={tech} />
           ))}
         </dd>
       </div>
