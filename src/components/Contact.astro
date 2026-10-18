@@ -1,0 +1,89 @@
+---
+import { site } from '../data/site';
+---
+
+<section
+  id="contato"
+  class="relative overflow-hidden border-t border-line"
+  aria-labelledby="contato-titulo"
+>
+  <div class="bg-grid pointer-events-none absolute inset-0 rotate-180" aria-hidden="true"></div>
+
+  <div class="container-page relative py-24 text-center sm:py-32" data-reveal>
+    <p class="eyebrow mb-4">
+      <span class="text-muted">04.</span> vamos_conversar?
+    </p>
+    <h2 id="contato-titulo" class="text-4xl font-semibold tracking-tight text-balance sm:text-6xl">
+      Tem um projeto em mente?
+    </h2>
+    <p class="mx-auto mt-5 max-w-xl text-lg text-muted">
+      Estou aberto a oportunidades, projetos e trocas sobre desenvolvimento e segurança. Respondo
+      por e-mail ou LinkedIn.
+    </p>
+
+    <div class="mt-10 flex flex-wrap items-center justify-center gap-3">
+      <a href={`mailto:${site.email}`} class="btn btn-primary">
+        Enviar e-mail
+      </a>
+      <button type="button" class="btn btn-ghost font-mono" data-copy-email={site.email}>
+        <span data-copy-label>{site.email}</span>
+        <svg
+          width="16"
+          height="16"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          aria-hidden="true"
+        >
+          <rect x="9" y="9" width="11" height="11" rx="2"></rect>
+          <path d="M5 15V5a2 2 0 0 1 2-2h10"></path>
+        </svg>
+      </button>
+    </div>
+    <p class="sr-only" aria-live="polite" data-copy-status></p>
+
+    <div class="mt-8 flex justify-center gap-6 text-sm font-semibold">
+      <a
+        href={site.linkedin}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="flex min-h-11 items-center text-muted hover:text-accent"
+      >
+        LinkedIn ↗
+      </a>
+      <a
+        href={site.github}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="flex min-h-11 items-center text-muted hover:text-accent"
+      >
+        GitHub ↗
+      </a>
+    </div>
+  </div>
+</section>
+
+<script>
+  const RESET_DELAY_MS = 2000;
+  const button = document.querySelector<HTMLButtonElement>('[data-copy-email]');
+  const label = button?.querySelector<HTMLElement>('[data-copy-label]');
+  const status = document.querySelector<HTMLElement>('[data-copy-status]');
+
+  button?.addEventListener('click', async () => {
+    const email = button.dataset.copyEmail ?? '';
+    try {
+      await navigator.clipboard.writeText(email);
+      if (label) label.textContent = 'E-mail copiado ✓';
+      if (status) status.textContent = 'E-mail copiado para a área de transferência.';
+    } catch (error) {
+      // Sem permissão de clipboard (ex.: HTTP ou navegador antigo): abre o app de e-mail.
+      console.warn('Não foi possível copiar o e-mail:', error);
+      window.location.href = `mailto:${email}`;
+      return;
+    }
+    setTimeout(() => {
+      if (label) label.textContent = email;
+    }, RESET_DELAY_MS);
+  });
+</script>

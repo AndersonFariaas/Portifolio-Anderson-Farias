@@ -1,0 +1,20 @@
+---
+interface Props {
+  index: string;
+  title: string;
+  id: string;
+}
+
+const { index, title, id } = Astro.props;
+---
+
+<div class="mb-10 sm:mb-12" data-reveal>
+  <p class="eyebrow mb-3 flex gap-2">
+    <span class="text-muted">{index}.</span>
+    <span>{title.toLowerCase().replace(/\s+/g, '_')}</span>
+  </p>
+  <h2 id={id} class="text-3xl font-semibold tracking-tight sm:text-4xl">
+    {title}
+  </h2>
+  <slot />
+</div>

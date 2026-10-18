@@ -1,0 +1,30 @@
+---
+import SectionHeading from './SectionHeading.astro';
+import { skillGroups } from '../data/site';
+---
+
+<section
+  id="habilidades"
+  class="container-page py-20 sm:py-28"
+  aria-labelledby="habilidades-titulo"
+>
+  <SectionHeading index="03" title="Habilidades" id="habilidades-titulo" />
+
+  <div class="grid gap-6 md:grid-cols-3">
+    {skillGroups.map((group) => (
+      <div class="card p-6" data-reveal>
+        <p class="font-mono text-xs text-muted">
+          <span class="text-accent">$</span> {group.command}
+        </p>
+        <h3 class="mt-3 mb-5 text-lg font-semibold">{group.title}</h3>
+        <ul class="flex flex-wrap gap-2">
+          {group.items.map((item) => (
+            <li class="rounded-md border border-line bg-surface-2 px-2.5 py-1 text-sm text-ink">
+              {item}
+            </li>
+          ))}
+        </ul>
+      </div>
+    ))}
+  </div>
+</section>

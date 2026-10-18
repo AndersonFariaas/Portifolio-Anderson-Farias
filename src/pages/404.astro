@@ -1,0 +1,19 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { url } from '../lib/url';
+---
+
+<BaseLayout title="Página não encontrada">
+  <section class="container-page py-28 text-center sm:py-40">
+    <p class="eyebrow">Erro 404</p>
+    <h1 class="mt-4 font-mono text-4xl font-semibold sm:text-6xl">
+      cd: página não encontrada<span class="cursor-blink text-accent">_</span>
+    </h1>
+    <p class="mx-auto mt-5 max-w-md text-lg text-muted">
+      O endereço pode ter mudado ou não existe mais.
+    </p>
+    <a href={url()} class="btn btn-primary mt-10">
+      Voltar para o início
+    </a>
+  </section>
+</BaseLayout>

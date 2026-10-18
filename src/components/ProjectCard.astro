@@ -1,0 +1,107 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import ProjectCover from './ProjectCover.astro';
+import { url } from '../lib/url';
+
+interface Props {
+  project: CollectionEntry<'projetos'>;
+  wide?: boolean;
+}
+
+const { project, wide = false } = Astro.props;
+const { title, summary, category, stack, highlights, status, links } = project.data;
+const caseUrl = url(`projetos/${project.id}/`);
+---
+
+<article
+  class:list={[
+    'group card relative flex flex-col overflow-hidden transition-colors duration-300 hover:border-line-strong',
+    wide && 'lg:col-span-2 lg:grid lg:grid-cols-2',
+  ]}
+  data-reveal
+>
+  <div
+    class:list={[wide && 'lg:order-2 lg:[&>div]:h-full lg:[&>div]:border-b-0 lg:[&>div]:border-l']}
+  >
+    <ProjectCover project={project} />
+  </div>
+
+  <div class="flex flex-1 flex-col p-6 sm:p-8">
+    <div class="mb-4 flex flex-wrap items-center gap-x-3 gap-y-1 font-mono text-xs">
+      <span class="text-accent">{category}</span>
+      <span class="text-line-strong" aria-hidden="true">
+        /
+      </span>
+      <span class="flex items-center gap-1.5 text-muted">
+        <span
+          class:list={[
+            'size-1.5 rounded-full',
+            status === 'Em produção' ? 'bg-accent' : 'bg-muted',
+          ]}
+          aria-hidden="true"
+        ></span>
+        {status}
+      </span>
+    </div>
+
+    <h3 class="text-2xl font-semibold tracking-tight">
+      <a href={caseUrl} class="after:absolute after:inset-0 focus-visible:outline-none">
+        {title}
+      </a>
+    </h3>
+    <p class="mt-3 leading-relaxed text-muted">{summary}</p>
+
+    {wide && (
+      <ul class="mt-5 space-y-2 text-sm text-muted">
+        {highlights.map((item) => (
+          <li class="flex gap-2">
+            <span class="font-mono text-accent" aria-hidden="true">
+              ›
+            </span>
+            {item}
+          </li>
+        ))}
+      </ul>
+    )}
+
+    <ul class="mt-6 flex flex-wrap gap-2" aria-label="Tecnologias">
+      {stack.slice(0, wide ? 8 : 5).map((tech) => (
+        <li class="tag">{tech}</li>
+      ))}
+    </ul>
+
+    <div class="mt-auto flex flex-wrap items-center gap-x-6 gap-y-2 pt-7 text-sm font-semibold">
+      <span class="text-accent transition-transform duration-300 group-hover:translate-x-1">
+        Ver estudo de caso →
+      </span>
+      {links.live && (
+        <a
+          href={links.live}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="relative z-10 flex min-h-11 items-center text-muted hover:text-ink"
+        >
+          Ver online ↗
+        </a>
+      )}
+      {links.repo && (
+        <a
+          href={links.repo}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="relative z-10 flex min-h-11 items-center text-muted hover:text-ink"
+        >
+          Código ↗
+        </a>
+      )}
+    </div>
+  </div>
+</article>
+
+<style>
+  /* O link do título cobre o card inteiro; o foco vai para a borda do card. */
+  article:has(h3 a:focus-visible) {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 4px;
+  }
+</style>
