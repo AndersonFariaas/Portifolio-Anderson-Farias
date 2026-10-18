@@ -1,0 +1,63 @@
+---
+import { site } from '../data/site';
+---
+
+<section id="inicio" class="relative overflow-hidden">
+  <div class="bg-grid pointer-events-none absolute inset-0" aria-hidden="true"></div>
+  <div
+    class="pointer-events-none absolute -top-40 left-1/2 h-[28rem] w-[48rem] -translate-x-1/2 rounded-full bg-accent/10 blur-3xl"
+    aria-hidden="true"
+  ></div>
+
+  <div class="container-page relative grid items-center gap-12 pt-16 pb-20 sm:pt-24 lg:grid-cols-[1.1fr_0.9fr] lg:gap-16 lg:pt-28 lg:pb-28">
+    <div>
+      <p class="eyebrow mb-5 flex items-center gap-2">
+        <span class="text-muted">$</span> whoami
+        <span class="text-muted">→</span>
+        <span class="text-ink">Profissional de TI</span>
+      </p>
+
+      <h1 class="text-[2.5rem] leading-[1.05] font-semibold tracking-tight text-balance sm:text-6xl lg:text-[4.25rem]">
+        Desenvolvimento web com <span class="text-accent">segurança</span> desde a primeira linha.
+      </h1>
+
+      <p class="mt-6 max-w-xl text-lg leading-relaxed text-pretty text-muted">
+        Olá, sou <strong class="font-semibold text-ink">Anderson</strong>. Estudante de
+        Desenvolvimento de Sistemas com foco em Cibersegurança, apaixonado por tecnologia, Segurança
+        da Informação e aprendizado contínuo.
+      </p>
+
+      <div class="mt-9 flex flex-wrap items-center gap-3">
+        <a href="#projetos" class="btn btn-primary">
+          Ver projetos
+          <span aria-hidden="true">→</span>
+        </a>
+        <a href={site.github} target="_blank" rel="noopener noreferrer" class="btn btn-ghost">
+          GitHub
+        </a>
+        <a href={site.linkedin} target="_blank" rel="noopener noreferrer" class="btn btn-ghost">
+          LinkedIn
+        </a>
+      </div>
+    </div>
+
+    <figure
+      class="card overflow-hidden shadow-2xl shadow-black/40"
+      aria-label="Resumo do perfil em código"
+    >
+      <div class="flex items-center gap-2 border-b border-line bg-surface-2 px-4 py-3">
+        <span class="size-3 rounded-full bg-[#ff5f57]/80" aria-hidden="true"></span>
+        <span class="size-3 rounded-full bg-[#febc2e]/80" aria-hidden="true"></span>
+        <span class="size-3 rounded-full bg-[#28c840]/80" aria-hidden="true"></span>
+        <span class="ml-3 font-mono text-xs text-muted">perfil.ts</span>
+      </div>
+      <pre class="overflow-x-auto p-5 font-mono text-[13px] leading-7 sm:text-sm"><code><span class="text-[#c792ea]">const</span> <span class="text-ink">anderson</span> <span class="text-muted">=</span> {'{'}
+  <span class="text-[#82aaff]">foco</span>: <span class="text-accent">'Desenvolvimento seguro'</span>,
+  <span class="text-[#82aaff]">formacao</span>: <span class="text-accent">'Desenv. de Sistemas'</span>,
+  <span class="text-[#82aaff]">stack</span>: [<span class="text-accent">'Vue'</span>, <span class="text-accent">'TypeScript'</span>, <span class="text-accent">'Node.js'</span>],
+  <span class="text-[#82aaff]">interesses</span>: [<span class="text-accent">'Redes'</span>, <span class="text-accent">'Linux'</span>, <span class="text-accent">'Python'</span>],
+  <span class="text-[#82aaff]">status</span>: <span class="text-accent">'aberto a novos desafios'</span>,
+{'}'};<span class="cursor-blink text-accent" aria-hidden="true">▍</span></code></pre>
+    </figure>
+  </div>
+</section>

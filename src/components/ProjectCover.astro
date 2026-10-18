@@ -1,0 +1,39 @@
+---
+import { Image } from 'astro:assets';
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  project: CollectionEntry<'projetos'>;
+  eager?: boolean;
+}
+
+const { project, eager = false } = Astro.props;
+const { cover, coverAlt, title, stack } = project.data;
+---
+
+<div class="relative aspect-[16/9] overflow-hidden border-b border-line bg-surface-2">
+  {cover ? (
+    <Image
+      src={cover}
+      alt={coverAlt ?? `Tela do projeto ${title}`}
+      widths={[480, 800, 1200]}
+      sizes="(min-width: 1024px) 50vw, 100vw"
+      loading={eager ? 'eager' : 'lazy'}
+      class="size-full object-cover transition-transform duration-500 ease-soft group-hover:scale-[1.03]"
+    />
+  ) : (
+    // Capa gerada para projetos sem screenshot: mantém o visual consistente.
+    <div class="absolute inset-0 flex flex-col justify-between p-6 sm:p-8" aria-hidden="true">
+      <div class="bg-grid absolute inset-0"></div>
+      <div class="absolute -right-16 -bottom-24 size-72 rounded-full bg-accent/10 blur-3xl"></div>
+      <span class="relative font-mono text-xs text-muted">~/projetos/{project.id}</span>
+      <div class="relative">
+        <p class="font-mono text-2xl font-semibold tracking-tight text-ink sm:text-4xl">
+          {title}
+          <span class="text-accent">_</span>
+        </p>
+        <p class="mt-3 font-mono text-xs text-accent sm:text-sm">{stack.slice(0, 4).join(' · ')}</p>
+      </div>
+    </div>
+  )}
+</div>

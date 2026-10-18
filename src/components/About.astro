@@ -1,0 +1,48 @@
+---
+import SectionHeading from './SectionHeading.astro';
+
+const facts = [
+  { label: 'Formação', value: 'Desenvolvimento de Sistemas' },
+  { label: 'Foco', value: 'Cibersegurança e desenvolvimento seguro' },
+  { label: 'Sistemas', value: 'Windows e Linux' },
+  { label: 'Prática', value: 'Manutenção de computadores e notebooks' },
+];
+---
+
+<section id="sobre" class="container-page py-20 sm:py-28" aria-labelledby="sobre-titulo">
+  <SectionHeading index="01" title="Sobre mim" id="sobre-titulo" />
+
+  <div class="grid gap-10 lg:grid-cols-[1.4fr_1fr] lg:gap-16">
+    <div class="space-y-5 text-lg leading-relaxed text-pretty text-muted" data-reveal>
+      <p>
+        Possuo conhecimentos em <strong class="font-medium text-ink">redes de computadores</strong>,
+        protocolos de comunicação, segurança de redes, administração de sistemas operacionais
+        Windows e Linux, além de experiência prática em manutenção de computadores e notebooks.
+      </p>
+      <p>
+        Também possuo conhecimentos em{' '}
+        <strong class="font-medium text-ink">desenvolvimento web Full-Stack</strong>, além de
+        fundamentos de Python para automação e atividades relacionadas à Cibersegurança.
+      </p>
+      <p>
+        Atualmente, direciono minha formação para o{' '}
+        <strong class="font-medium text-ink">desenvolvimento seguro</strong>, buscando desenvolver
+        soluções seguras, fortalecer a proteção de ambientes de TI e aprimorar continuamente minhas
+        competências técnicas.
+      </p>
+      <p>
+        Estou sempre em busca de novos desafios, oportunidades de aprendizado e evolução
+        profissional, com o objetivo de construir uma carreira sólida na área de Cibersegurança.
+      </p>
+    </div>
+
+    <dl class="card h-fit divide-y divide-line self-start" data-reveal>
+      {facts.map((fact) => (
+        <div class="flex flex-col gap-1 px-6 py-5">
+          <dt class="font-mono text-xs tracking-wide text-accent uppercase">{fact.label}</dt>
+          <dd class="text-ink">{fact.value}</dd>
+        </div>
+      ))}
+    </dl>
+  </div>
+</section>

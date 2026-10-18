@@ -1,0 +1,37 @@
+---
+import { getCollection } from 'astro:content';
+import SectionHeading from './SectionHeading.astro';
+import ProjectCard from './ProjectCard.astro';
+import { site } from '../data/site';
+
+const projects = (await getCollection('projetos')).sort((a, b) => a.data.order - b.data.order);
+---
+
+<section id="projetos" class="border-y border-line bg-surface/40" aria-labelledby="projetos-titulo">
+  <div class="container-page py-20 sm:py-28">
+    <SectionHeading index="02" title="Projetos selecionados" id="projetos-titulo">
+      <p class="mt-4 max-w-2xl text-lg text-muted">
+        Do problema à solução: cada projeto tem um estudo de caso com arquitetura, decisões e
+        cuidados de segurança.
+      </p>
+    </SectionHeading>
+
+    <div class="grid gap-6 lg:grid-cols-2">
+      {projects.map((project, index) => (
+        <ProjectCard project={project} wide={index === 0} />
+      ))}
+    </div>
+
+    <p class="mt-10 text-center text-muted" data-reveal>
+      Mais código no
+      <a
+        href={site.github}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="font-semibold text-ink underline decoration-line-strong underline-offset-4 hover:text-accent hover:decoration-accent"
+      >
+        GitHub ↗
+      </a>
+    </p>
+  </div>
+</section>
