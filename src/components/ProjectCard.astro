@@ -17,67 +17,75 @@ const caseUrl = url(`projetos/${project.id}/`);
 <article
   class:list={[
     'group card relative flex flex-col overflow-hidden transition-colors duration-300 hover:border-line-strong',
-    wide && 'lg:col-span-2 lg:grid lg:grid-cols-2',
+    wide && 'lg:col-span-2',
   ]}
   data-reveal
 >
-  <!-- No card largo a capa mantém 16:9 e fica centralizada: esticar até a altura do texto cortaria as laterais. -->
+  <!-- A capa fica sempre em cima, em 16:9: aparece inteira e preenche a largura do card. -->
+  <ProjectCover project={project} />
+
+  <!-- No card largo (lg+), o texto vira duas colunas: resumo e links à esquerda, destaques e stack à direita. -->
   <div
     class:list={[
-      wide &&
-        'lg:order-2 lg:flex lg:items-center lg:border-l lg:border-line lg:bg-bg lg:[&>div]:w-full lg:[&>div]:border-b-0',
+      'flex flex-1 flex-col p-6 sm:p-8',
+      wide && 'lg:grid lg:grid-cols-2 lg:grid-rows-[auto_1fr] lg:gap-x-12',
     ]}
   >
-    <ProjectCover project={project} />
-  </div>
+    <div class:list={[wide && 'lg:col-start-1 lg:row-start-1']}>
+      <div class="mb-4 flex flex-wrap items-center gap-x-3 gap-y-1 font-mono text-xs">
+        <span class="text-accent">{category}</span>
+        <span class="text-line-strong" aria-hidden="true">
+          /
+        </span>
+        <span class="flex items-center gap-1.5 text-muted">
+          <span
+            class:list={[
+              'size-1.5 rounded-full',
+              status === 'Em produção' ? 'bg-accent' : 'bg-muted',
+            ]}
+            aria-hidden="true"
+          ></span>
+          {status}
+        </span>
+      </div>
 
-  <div class="flex flex-1 flex-col p-6 sm:p-8">
-    <div class="mb-4 flex flex-wrap items-center gap-x-3 gap-y-1 font-mono text-xs">
-      <span class="text-accent">{category}</span>
-      <span class="text-line-strong" aria-hidden="true">
-        /
-      </span>
-      <span class="flex items-center gap-1.5 text-muted">
-        <span
-          class:list={[
-            'size-1.5 rounded-full',
-            status === 'Em produção' ? 'bg-accent' : 'bg-muted',
-          ]}
-          aria-hidden="true"
-        ></span>
-        {status}
-      </span>
+      <h3 class="text-2xl font-semibold tracking-tight">
+        <a href={caseUrl} class="after:absolute after:inset-0 focus-visible:outline-none">
+          {title}
+        </a>
+      </h3>
+      <p class="mt-3 leading-relaxed text-muted">{summary}</p>
     </div>
 
-    <h3 class="text-2xl font-semibold tracking-tight">
-      <a href={caseUrl} class="after:absolute after:inset-0 focus-visible:outline-none">
-        {title}
-      </a>
-    </h3>
-    <p class="mt-3 leading-relaxed text-muted">{summary}</p>
+    <div class:list={[wide && 'lg:col-start-2 lg:row-span-2 lg:row-start-1']}>
+      {wide && (
+        <ul class="mt-5 space-y-2 text-sm text-muted lg:mt-0">
+          {highlights.map((item) => (
+            <li class="flex gap-2">
+              <span class="font-mono text-accent" aria-hidden="true">
+                ›
+              </span>
+              {item}
+            </li>
+          ))}
+        </ul>
+      )}
 
-    {wide && (
-      <ul class="mt-5 space-y-2 text-sm text-muted">
-        {highlights.map((item) => (
-          <li class="flex gap-2">
-            <span class="font-mono text-accent" aria-hidden="true">
-              ›
-            </span>
-            {item}
+      <ul class="mt-6 flex flex-wrap gap-2" aria-label="Tecnologias">
+        {stack.slice(0, wide ? 8 : 5).map((tech) => (
+          <li>
+            <StackTag name={tech} />
           </li>
         ))}
       </ul>
-    )}
+    </div>
 
-    <ul class="mt-6 flex flex-wrap gap-2" aria-label="Tecnologias">
-      {stack.slice(0, wide ? 8 : 5).map((tech) => (
-        <li>
-          <StackTag name={tech} />
-        </li>
-      ))}
-    </ul>
-
-    <div class="mt-auto flex flex-wrap items-center gap-x-6 gap-y-2 pt-7 text-sm font-semibold">
+    <div
+      class:list={[
+        'mt-auto flex flex-wrap items-center gap-x-6 gap-y-2 pt-7 text-sm font-semibold',
+        wide && 'lg:col-start-1 lg:row-start-2 lg:self-end',
+      ]}
+    >
       <span class="text-accent transition-transform duration-300 group-hover:translate-x-1">
         Ver estudo de caso →
       </span>
