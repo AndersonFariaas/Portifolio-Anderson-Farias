@@ -12,7 +12,7 @@ featured: true
 year: 2026
 status: Em produção
 cover: ../../assets/projetos/majestic-12.png
-coverAlt: Tela de abertura do Portal MAJESTIC-12 com o título "A verdade está lá fora"
+coverAlt: Página inicial do Portal MAJESTIC-12 com o título "A verdade está lá fora", os botões Ver galeria OVNI e Casos documentados e os contadores de casos, fotos, vídeos e entidades
 links:
   live: https://portal-majestic-12.vercel.app/
 ---
