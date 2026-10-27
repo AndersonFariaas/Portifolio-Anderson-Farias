@@ -82,21 +82,18 @@ const caseUrl = url(`projetos/${project.id}/`);
 
     <div
       class:list={[
-        'mt-auto flex flex-wrap items-center gap-x-6 gap-y-2 pt-7 text-sm font-semibold',
+        'mt-auto flex flex-wrap items-center gap-3 pt-7',
         wide && 'lg:col-start-1 lg:row-start-2 lg:self-end',
       ]}
     >
-      <span class="text-accent transition-transform duration-300 group-hover:translate-x-1">
-        Ver estudo de caso →
-      </span>
       {links.live && (
         <a
           href={links.live}
           target="_blank"
           rel="noopener noreferrer"
-          class="relative z-10 flex min-h-11 items-center text-muted hover:text-ink"
+          class="btn btn-primary relative z-10"
         >
-          Ver online ↗
+          Ver online ↗<span class="sr-only">: {title}</span>
         </a>
       )}
       {links.repo && (
@@ -104,9 +101,9 @@ const caseUrl = url(`projetos/${project.id}/`);
           href={links.repo}
           target="_blank"
           rel="noopener noreferrer"
-          class="relative z-10 flex min-h-11 items-center text-muted hover:text-ink"
+          class="btn btn-ghost relative z-10"
         >
-          Código ↗
+          Ver código ↗<span class="sr-only">: {title}</span>
         </a>
       )}
     </div>
