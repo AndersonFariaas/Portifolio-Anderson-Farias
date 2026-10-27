@@ -10,16 +10,8 @@ const year = new Date().getFullYear();
     <p>
       © {year} {site.name}. Todos os direitos reservados.
     </p>
-    <div class="flex items-center gap-6">
-      <a href={site.github} target="_blank" rel="noopener noreferrer" class="hover:text-ink">
-        GitHub
-      </a>
-      <a href={site.linkedin} target="_blank" rel="noopener noreferrer" class="hover:text-ink">
-        LinkedIn
-      </a>
-      <a href={`${url()}#inicio`} class="hover:text-accent">
-        Voltar ao topo ↑
-      </a>
-    </div>
+    <a href={`${url()}#inicio`} class="hover:text-accent">
+      Voltar ao topo ↑
+    </a>
   </div>
 </footer>
