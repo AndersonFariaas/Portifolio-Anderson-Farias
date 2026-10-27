@@ -11,7 +11,7 @@ order: 3
 year: 2026
 status: Concluído
 links:
-  live: https://andersonfariaas.github.io/Trabalho-Front-End/
+  live: https://senaishop.vercel.app/
   repo: https://github.com/AndersonFariaas/Trabalho-Front-End
 ---
 
