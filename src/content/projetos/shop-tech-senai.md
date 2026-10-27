@@ -10,6 +10,8 @@ highlights:
 order: 3
 year: 2026
 status: Concluído
+cover: ../../assets/projetos/shop-tech-senai.png
+coverAlt: Página inicial do SENAI Shop Tech com o título "Compre já no SENAI Shop." e os botões Explorar catálogo e Conhecer o SENAI
 links:
   live: https://senaishop.vercel.app/
   repo: https://github.com/AndersonFariaas/Trabalho-Front-End

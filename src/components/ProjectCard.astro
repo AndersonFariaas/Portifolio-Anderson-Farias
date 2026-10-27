@@ -21,8 +21,12 @@ const caseUrl = url(`projetos/${project.id}/`);
   ]}
   data-reveal
 >
+  <!-- No card largo a capa mantém 16:9 e fica centralizada: esticar até a altura do texto cortaria as laterais. -->
   <div
-    class:list={[wide && 'lg:order-2 lg:[&>div]:h-full lg:[&>div]:border-b-0 lg:[&>div]:border-l']}
+    class:list={[
+      wide &&
+        'lg:order-2 lg:flex lg:items-center lg:border-l lg:border-line lg:bg-bg lg:[&>div]:w-full lg:[&>div]:border-b-0',
+    ]}
   >
     <ProjectCover project={project} />
   </div>

@@ -11,6 +11,8 @@ order: 1
 featured: true
 year: 2026
 status: Concluído
+cover: ../../assets/projetos/gestor-fastfood.png
+coverAlt: Tela do caixa do Gestor FastFood com o cardápio em cards e um pedido de 5 itens no valor de R$ 112,50, pagamento em PIX selecionado
 links:
   repo: https://github.com/AndersonFariaas/Gestor-FastFood-v1
 ---
